@@ -7,12 +7,13 @@
 
     socket.onopen = (event) => {
         console.log("Socket opened, hopefully.")
+
+        // TODO: Fetch current BPM
     }
 
     socket.onmessage = (event) => {
-        console.log("Message received:")
-        console.log("origin", event.origin);
-        console.log("data", event.data);
+        console.log("Message received from origin:" + event.origin);
+        console.log("data:", event.data);
     }
 
     // TODO: Handle automatic reconnect trying
