@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{EE58EEB4-77C4-4A9E-BC5A-8D5EBA46B2A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{EE58EEB4-77C4-4A9E-BC5A-8D5EBA46B2A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "submodules", "submodules", "{F05C0CBB-CB76-4FD7-8EAE-F840A161DA3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "websocket-manager", "websocket-manager", "{A947C86D-E418-41A4-9A6F-78C939F5098D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSocketManager", "submodules\radu-matei\websocket-manager\src\WebSocketManager\WebSocketManager.csproj", "{3D1F5889-4305-4F5E-B35C-D4F0ED151B22}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSocketManager.Common", "submodules\radu-matei\websocket-manager\src\WebSocketManager.Common\WebSocketManager.Common.csproj", "{7D033A4F-48EF-4B9C-AD7C-54C04C1FFB34}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DVPF.Core", "..\dvpf\DVPF.Core\DVPF.Core.csproj", "{C7E32A90-9C43-44F3-99FF-C96CC7E11956}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OsuStatePresenter", "..\osu-state-presenter\OsuStatePresenter\OsuStatePresenter.csproj", "{863DA1A0-8886-4F50-A075-9381202F9EDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "osu-memory", "osu-memory", "{B707F8B2-332C-4DBE-A4AC-14CD21407805}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessMemoryDataFinder", "..\osu-state-presenter\submodules\Piotrekol\ProcessMemoryDataFinder\ProcessMemoryDataFinder\ProcessMemoryDataFinder.csproj", "{C661EFB8-4F9C-486E-989C-8412656BD938}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OsuMemoryDataProvider", "..\osu-state-presenter\submodules\Piotrekol\ProcessMemoryDataFinder\OsuMemoryDataProvider\OsuMemoryDataProvider.csproj", "{340A877E-0FF4-4830-B6B2-879F7217C06E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +33,41 @@ Global
 		{EE58EEB4-77C4-4A9E-BC5A-8D5EBA46B2A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE58EEB4-77C4-4A9E-BC5A-8D5EBA46B2A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE58EEB4-77C4-4A9E-BC5A-8D5EBA46B2A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D1F5889-4305-4F5E-B35C-D4F0ED151B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1F5889-4305-4F5E-B35C-D4F0ED151B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1F5889-4305-4F5E-B35C-D4F0ED151B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1F5889-4305-4F5E-B35C-D4F0ED151B22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D033A4F-48EF-4B9C-AD7C-54C04C1FFB34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D033A4F-48EF-4B9C-AD7C-54C04C1FFB34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D033A4F-48EF-4B9C-AD7C-54C04C1FFB34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D033A4F-48EF-4B9C-AD7C-54C04C1FFB34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7E32A90-9C43-44F3-99FF-C96CC7E11956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7E32A90-9C43-44F3-99FF-C96CC7E11956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7E32A90-9C43-44F3-99FF-C96CC7E11956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7E32A90-9C43-44F3-99FF-C96CC7E11956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{863DA1A0-8886-4F50-A075-9381202F9EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{863DA1A0-8886-4F50-A075-9381202F9EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{863DA1A0-8886-4F50-A075-9381202F9EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{863DA1A0-8886-4F50-A075-9381202F9EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C661EFB8-4F9C-486E-989C-8412656BD938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C661EFB8-4F9C-486E-989C-8412656BD938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C661EFB8-4F9C-486E-989C-8412656BD938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C661EFB8-4F9C-486E-989C-8412656BD938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340A877E-0FF4-4830-B6B2-879F7217C06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340A877E-0FF4-4830-B6B2-879F7217C06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340A877E-0FF4-4830-B6B2-879F7217C06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340A877E-0FF4-4830-B6B2-879F7217C06E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A947C86D-E418-41A4-9A6F-78C939F5098D} = {F05C0CBB-CB76-4FD7-8EAE-F840A161DA3B}
+		{3D1F5889-4305-4F5E-B35C-D4F0ED151B22} = {A947C86D-E418-41A4-9A6F-78C939F5098D}
+		{7D033A4F-48EF-4B9C-AD7C-54C04C1FFB34} = {A947C86D-E418-41A4-9A6F-78C939F5098D}
+		{B707F8B2-332C-4DBE-A4AC-14CD21407805} = {F05C0CBB-CB76-4FD7-8EAE-F840A161DA3B}
+		{C661EFB8-4F9C-486E-989C-8412656BD938} = {B707F8B2-332C-4DBE-A4AC-14CD21407805}
+		{340A877E-0FF4-4830-B6B2-879F7217C06E} = {B707F8B2-332C-4DBE-A4AC-14CD21407805}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {78F2B499-B176-43A4-9531-A23E9EF83006}

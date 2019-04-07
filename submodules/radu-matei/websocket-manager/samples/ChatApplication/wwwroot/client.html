@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Test Page</title>
+</head>
+
+<body>
+    <h1>This should be mapped to "/chat"</h1>
+    <input type=text id="textInput" placeholder="Enter your text" />
+    <button id="sendButton">Send</button>
+
+    <ul id="messages"></ul>
+
+
+    <script src="./WebSocketManager.js"></script>
+
+    <script language="javascript" type="text/javascript">
+	
+		var connection = new WebSocketManager("ws://" + location.host + "/chat");
+		
+		// optional.
+		// called when the connection has been established together with your id.
+		connection.onConnected = (id) => {
+			appendItem(list, "-> You are now connected! Connection ID: " + connection.id);
+			
+			// let's call a method on the server with return value.
+			// if you pass 0 for either int it will cause a remote exception.
+			connection.invoke('DoMath', 'int', 5, 'int', 4, (result, error) => {
+				if (result) console.log("The server's DoMath returned: " + result);
+				if (error) console.error("The server's DoMath errored: " + error);
+			});
+		};
+		
+		// optional.
+		// called when the connection to the server has been lost.
+		connection.onDisconnected = () => {
+			appendItem(list, "-> Disconnected!");
+		};
+		
+		// optional.
+		// called when some plain-text message has been received.
+		connection.onMessage = (text) => {
+			appendItem(list, "[System] " + text);
+		};
+		
+		// here we register a method with two arguments that can be called by the server.
+		connection.methods.receiveMessage = (userid, text) => {
+			appendItem(list, userid + " said: " + text);
+		};
+		
+		// here we register a method that returns a value that can be called by the server.
+		// to have the server call this type "/math" in chat.
+		connection.methods.DoMath = (a, b) => {
+			if (a == 0 || b == 0) throw "I can't help you!";
+			//throw "I won't answer lol, you have your own processor."
+			return ['int', a + b];
+		}
+		
+		// establish a connection to the server.
+		connection.connect();
+
+		var list = document.getElementById("messages");
+		var button = document.getElementById("sendButton");
+		button.addEventListener("click", function() {
+
+			var input = document.getElementById("textInput");
+			connection.invokeOnly("SendMessage", 'string', input.value);
+
+			input.value = "";
+		});
+
+		function appendItem(list, message) {
+			var item = document.createElement("li");
+			item.appendChild(document.createTextNode(message));
+			list.appendChild(item);
+		};
+    </script>
+</body>
+
+</html>
