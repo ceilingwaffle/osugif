@@ -1,17 +1,18 @@
-﻿using System;
-using System.IO;
-using System.Net.WebSockets;
+﻿using DVPF.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.FileProviders;
 using OsuStatePresenter;
 using OsuStatePresenter.Nodes;
+using System;
+using System.IO;
 
 namespace Web
 {
     public class Startup
     {
+        protected WebSocketSender WebSocketSender { get; set; } = null;
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
@@ -22,12 +23,7 @@ namespace Web
             // handle value changed on a specific node
             if (presenter.TryGetNode(typeof(BpmNode), out var bpmNode))
             {
-                bpmNode.OnValueChange += (sender, e) =>
-                {
-                    Console.WriteLine($"BPM: {bpmNode.GetValue()}");
-
-                    // TODO: Send WS message
-                };
+                bpmNode.OnValueChange += (s, e) => HandleBpmChange(bpmNode, s, e);
             }
 
             // start the Presenter
@@ -45,9 +41,16 @@ namespace Web
                 EnableDirectoryBrowsing = false
             });
 
+
             // init request handling
             app.Use(async (context, next) =>
             {
+                if (WebSocketSender is null)
+                {
+                    WebSocketSender = new WebSocketSender(context.Request.Host.Host, context.Request.Host.Port);
+                    WebSocketSender.Init();
+                }
+
                 await next.Invoke();
 
                 // redirect root
@@ -60,5 +63,31 @@ namespace Web
             // TODO: Add 404 page to every request except for "/Osu"
         }
 
+        private void HandleBpmChange(Node bpmNode, object sender, NodeEventArgs e)
+        {
+            if (bpmNode is null || bpmNode.GetValue() is null)
+            {
+                return;
+            }
+
+            float bpm = 0f;
+
+            try
+            {
+                bpm = (float)bpmNode.GetValue();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Caught Exception. Unable to cast bpm to float: {ex.Message}");
+                return;
+            }
+
+            Console.WriteLine($"BPM: {bpmNode.GetValue()}");
+
+            if (WebSocketSender != null)
+            {
+                WebSocketSender.Send($"{bpm}");
+            }
+        }
     }
 }

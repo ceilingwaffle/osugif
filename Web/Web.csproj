@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\dvpf\DVPF.Core\DVPF.Core.csproj" />
     <ProjectReference Include="..\..\osu-state-presenter\OsuStatePresenter\OsuStatePresenter.csproj" />
+    <ProjectReference Include="..\submodules\statianzo\Fleck\src\Fleck\Fleck.csproj" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

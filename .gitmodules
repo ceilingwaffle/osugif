@@ -1,0 +1,3 @@
+[submodule "submodules/statianzo/Fleck"]
+	path = submodules/statianzo/Fleck
+	url = https://github.com/statianzo/Fleck.git

@@ -3,7 +3,7 @@
 
     var content = document.getElementById("content");
 
-    var socket = new WebSocket(GetWebSocketUrl("ws"));
+    var socket = new WebSocket(GetWebSocketUrl("Osu/BPM"));
 
     socket.onopen = (event) => {
         console.log("Socket opened, hopefully.")
@@ -17,6 +17,8 @@
 
     // TODO: Handle automatic reconnect trying
 
+    // TODO: Handle 0 bpm (just play gif at its normal speed?)
+
 })();
 
 function GetWebSocketUrl(pathName) {
@@ -26,7 +28,8 @@ function GetWebSocketUrl(pathName) {
     } else {
         new_uri = "ws:";
     }
-    new_uri += "//" + loc.host + "/" + pathName;
+    //new_uri += "//" + loc.host + "/" + pathName;
+    new_uri += "//" + "127.0.0.1:8081" + "/" + pathName;
 
     return new_uri;
 }
