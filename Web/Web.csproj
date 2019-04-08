@@ -26,8 +26,12 @@
     <ProjectReference Include="..\submodules\statianzo\Fleck\src\Fleck\Fleck.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="public\img\" />
+  </ItemGroup>
+
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="if EXIST &quot;$(TargetDir)public&quot; rmdir /S /Q &quot;$(TargetDir)public&quot;&#xD;&#xA;xcopy /I /H /E /Y /R &quot;$(ProjectDir)public&quot; &quot;$(TargetDir)public&quot;&#xD;&#xA;" />
+    <Exec Command="if EXIST &quot;$(TargetDir)public&quot; rmdir /S /Q &quot;$(TargetDir)public&quot;&#xD;&#xA;xcopy /I /H /E /Y /R &quot;$(ProjectDir)public&quot; &quot;$(TargetDir)public&quot;" />
   </Target>
 
 </Project>

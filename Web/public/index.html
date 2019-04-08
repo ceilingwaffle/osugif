@@ -3,11 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>DANCE</title>
+    <!-- x-gif -->
+    <!--<script>
+        if ('registerElement' in document
+            && 'createShadowRoot' in HTMLElement.prototype
+            && 'import' in document.createElement('link')
+            && 'content' in document.createElement('template')) {
+            // We're using a browser with native WC support!
+        } else {
+            document.write('<script src="https:\/\/cdnjs.cloudflare.com/ajax/libs/polymer/0.3.4/platform.js"><\/script>')
+        }
+    </script>-->
+    <script src="lib/x-gif/dist/platform.js"></script>
+    <link rel="import" href="lib/x-gif/dist/x-gif.html">
+    <!-- end x-gif -->
+    <script src="js/app.js" type="text/javascript"></script>
 </head>
 <body>
-    <div id="content">
-        <img src="http://www.funnybeing.com/wp-content/uploads/2017/03/Now-We-Dance-539x800.jpg" />
+    <div id="content" style="width:400px;height:300px;">
+        <!--<x-gif src="gif/sans.gif" id="gif" bpm="0" snap debug></x-gif>-->
+        <!--<x-gif src="gif/hatkid.gif" id="gif" bpm="0" snap debug></x-gif>-->
+        <!--<x-gif src="gif/mario.gif" id="gif" bpm="0" snap debug></x-gif>-->
+        <!-- cat butt -->
+        <!--<x-gif src="https://media.giphy.com/media/nNxT5qXR02FOM/giphy.gif" id="gif" bpm="0" snap debug></x-gif>-->
+        <!-- pikachu -->
+        <!--<x-gif src="https://media.giphy.com/media/rCftUAVPLExZC/giphy.gif" id="gif" bpm="0" snap debug></x-gif>-->
+        <!--<x-gif src="https://media1.giphy.com/media/98EBb55L7GoQ8/giphy.gif" id="gif" bpm="0" snap debug></x-gif>-->
+        <x-gif src="https://media.giphy.com/media/jGa1qMM9EM944/giphy.gif" id="gif" bpm="0" snap debug></x-gif>
+        <!--<x-gif src="gif/bongo.gif" id="gif" bpm="0" snap debug></x-gif>-->
+        <!-- TODO: fix cutoff issue, possibly caused by too high a frame rate -->
+        <!--<x-gif src="gif/osu.gif" id="gif" bpm="0" snap debug></x-gif>-->
+        <!--<x-gif src="gif/gandalf.gif" id="gif" bpm="0" snap debug></x-gif>-->
     </div>
-    <script src="js/app.js" type="text/javascript"></script>
+
+    
 </body>
 </html>

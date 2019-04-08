@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "filesystem",
+      "library": "../submodules/geelen/x-gif/dist/",
+      "destination": "lib/x-gif/dist",
+      "files": [
+        "layout.html",
+        "platform.js",
+        "polymer.html",
+        "polymer.js",
+        "polymer.js.map",
+        "x-gif.angular.js",
+        "x-gif.css",
+        "x-gif.html",
+        "x-gif.js",
+        "x-gif.local.html"
+      ]
+    }
+  ]
+}
