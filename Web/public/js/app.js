@@ -2,7 +2,7 @@
     // x-gif: http://geelen.github.io/x-gif
 
     var content = document.getElementById("content");
-    var socket = new WebSocket(GetWebSocketUrl("Osu/BPM"));
+    var socket = new WebSocket(GetWebSocketUrl("Osu"));
 
     socket.onopen = (event) => {
         console.log("Socket opened, hopefully.")
@@ -30,7 +30,7 @@ function ChangeGifSpeed(gifElement, bpm) {
     // TODO: Stop animation when song is paused.
     // TODO: fix cutoff issue, possibly caused by too high a frame rate
     // TODO: stabilize sudden bpm changes
-    bpm /= 8;
+    //bpm /= 8;
     gifElement.setAttribute("bpm", bpm.toString());
     console.log("Changed gif speed to " + bpm.toString());
 }

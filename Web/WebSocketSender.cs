@@ -26,7 +26,7 @@ namespace Web
         {
             FleckLog.Level = LogLevel.Debug;
             WebSocketConnections = new List<IWebSocketConnection>();
-            var server = new WebSocketServer($"ws://0.0.0.0:8081/Osu/BPM");
+            var server = new WebSocketServer($"ws://0.0.0.0:8081/Osu");
             server.Start(socket =>
             {
                 socket.OnOpen = () =>
