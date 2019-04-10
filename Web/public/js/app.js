@@ -31,7 +31,6 @@
 function ChangeGifSpeed(gifElement, bpm, isPaused) {
 
     // TODO: calculate framerate of gif using delay time and browser default FPS (https://github.com/rfrench/gify)
-    // TODO: Stop animation when song is paused.
     // TODO: fix cutoff issue, possibly caused by too high a frame rate
     // TODO: stabilize sudden bpm changes
     //bpm /= 8;
