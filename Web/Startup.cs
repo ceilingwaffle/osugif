@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.FileProviders;
+using Newtonsoft.Json;
 using OsuStatePresenter;
 using OsuStatePresenter.Nodes;
 using System;
@@ -20,11 +21,13 @@ namespace Web
             OsuPresenter presenter = new OsuPresenter();
 
             // handle value changed on a specific node
-            RegisterBpmNodeValueChangedHandler(presenter);
+            //RegisterBpmNodeValueChangedHandler(presenter);
+
+            // handle new game state created event
+            presenter.StatePresenter.AddEventHandler_NewStateCreated(HandleNewGameState);
 
             // start the Presenter
             presenter.Start();
-
             Console.WriteLine("Started the Osu State Presenter.");
 
             // serve static files from exe output directory
@@ -36,7 +39,6 @@ namespace Web
                 RequestPath = "/Osu",
                 EnableDirectoryBrowsing = false
             });
-
 
             // init request handling
             app.Use(async (context, next) =>
@@ -69,18 +71,6 @@ namespace Web
                     return;
                 }
 
-                //float bpm = 0.0f;
-
-                //try
-                //{
-                //    bpm = (float)bpmNode.GetValue();
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine($"Caught Exception. Unable to cast bpm to float: {ex.Message}");
-                //    return;
-                //}
-
                 bpmNode.OnValueChange += (s, e) => HandleBpmChange(bpmNode, s, e);
                 Console.WriteLine($"BPM value change handler registered.");
             }
@@ -90,10 +80,27 @@ namespace Web
         {
             Console.WriteLine($"BPM: {bpmNode.GetValue()}");
 
+            //if (WebSocketSender != null)
+            //{
+            //    WebSocketSender.Send($"{bpmNode.GetValue().ToString()}");
+            //}
+        }
+
+        private void HandleNewGameState(DVPF.Core.State state)
+        {
+            Console.WriteLine($"New Game State:\n{state.ToString()}");
+
             if (WebSocketSender != null)
             {
-                WebSocketSender.Send($"{bpmNode.GetValue().ToString()}");
+                string json = BuildJsonStringFromStateObject(state);
+
+                WebSocketSender.Send(json);
             }
+        }
+
+        private string BuildJsonStringFromStateObject(State state)
+        {
+            return JsonConvert.SerializeObject(state);
         }
     }
 }
