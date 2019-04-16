@@ -88,7 +88,7 @@ namespace Web
 
         private void HandleNewGameState(DVPF.Core.State state)
         {
-            Console.WriteLine($"New Game State:\n{state.ToString()}");
+            //Console.WriteLine($"New Game State:\n{state.ToString()}");
 
             if (WebSocketSender != null)
             {

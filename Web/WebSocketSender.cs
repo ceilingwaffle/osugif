@@ -49,7 +49,7 @@ namespace Web
 
         public void Send(string message)
         {
-            Console.WriteLine($"Sending WS message to connected sockets: \"{message}\".");
+            //Console.WriteLine($"Sending WS message to connected sockets: \"{message}\".");
 
             foreach (var socket in WebSocketConnections.ToList())
             {
