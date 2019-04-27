@@ -47,7 +47,7 @@ function ChangeGifSpeed(gifElement, bpm, isPaused) {
     // TODO: calculate framerate of gif using delay time and browser default FPS (https://github.com/rfrench/gify)
     // TODO: fix cutoff issue, possibly caused by too high a frame rate
     // TODO: stabilize sudden bpm changes
-    bpm /= 32;
+    //bpm /= 32;
 
     if (isPaused == true) {
         console.log("Paused gif.");
