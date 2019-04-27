@@ -4,3 +4,12 @@
 [submodule "submodules/geelen/x-gif"]
 	path = submodules/geelen/x-gif
 	url = https://github.com/geelen/x-gif.git
+[submodule "submodules/OsuStatePresenter"]
+	path = submodules/OsuStatePresenter
+	url = git@github.com:ceilingwaffle/OsuStatePresenter.git
+[submodule "submodules/DependentValuePresentationFramework"]
+	path = submodules/DependentValuePresentationFramework
+	url = git@github.com:ceilingwaffle/DependentValuePresentationFramework.git
+[submodule "submodules/ProcessMemoryDataFinder"]
+	path = submodules/ProcessMemoryDataFinder
+	url = git@github.com:Piotrekol/ProcessMemoryDataFinder.git
